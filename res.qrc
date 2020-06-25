@@ -13,5 +13,6 @@
         <file>icons/oneicon.png</file>
         <file>icons/refresh.png</file>
         <file>icons/stop.png</file>
+        <file>icons/back.png</file>
     </qresource>
 </RCC>

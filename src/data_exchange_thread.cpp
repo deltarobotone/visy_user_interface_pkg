@@ -34,7 +34,7 @@ bool DataExchangeThread::init()
   ros::NodeHandle nh;
   image_transport::ImageTransport it(nh);
 
-  imageSub = it.subscribe("/raspicam_node/image", 1, &DataExchangeThread::imageCb, this);
+  imageSub = it.subscribe("/conveyor_detector_node/visy_image", 1, &DataExchangeThread::imageCb, this);
   startSortingClient = nh.serviceClient<visy_sorting_app_pkg::StartSorting>("start_sorting");
   stopSortingClient = nh.serviceClient<visy_sorting_app_pkg::StopSorting>("stop_sorting");
   rosNodeThread->start();
@@ -83,6 +83,22 @@ void DataExchangeThread::stopSortingApp()
   pMutex->lock();
   visy_sorting_app_pkg::StopSorting srv;
   stopSortingClient.call(srv);
+  pMutex->unlock();
+  delete pMutex;
+}
+
+void DataExchangeThread::changeImageBack()
+{
+  QMutex * pMutex = new QMutex();
+  pMutex->lock();
+  pMutex->unlock();
+  delete pMutex;
+}
+
+void DataExchangeThread::changeImageNext()
+{
+  QMutex * pMutex = new QMutex();
+  pMutex->lock();
   pMutex->unlock();
   delete pMutex;
 }

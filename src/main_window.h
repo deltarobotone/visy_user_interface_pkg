@@ -23,6 +23,8 @@ public:
 private:
     Q_SLOT void startButtonHandle();
     Q_SLOT void stopButtonHandle();
+    Q_SLOT void backButtonHandle();
+    Q_SLOT void nextButtonHandle();
 
     QVBoxLayout *basicLayout;
 
@@ -34,6 +36,8 @@ private:
 
     QPushButton *startButton;
     QPushButton *stopButton;
+    QPushButton *backButton;
+    QPushButton *nextButton;
 
     DataExchangeThread dataExchangeThread;
 

@@ -37,6 +37,8 @@ public:
 
   void startSortingApp();
   void stopSortingApp();
+  void changeImageNext();
+  void changeImageBack();
 
   Q_SLOT void run();
 
