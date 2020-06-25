@@ -9,7 +9,7 @@ int main(int argc, char** argv) {
 
     MainWindow mainWindow(argc, argv);
 
-    mainWindow.showFullScreen();
+    //mainWindow.showFullScreen();
 
 	return app.exec();
 }
