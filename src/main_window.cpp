@@ -59,8 +59,8 @@ void MainWindow::createLayout()
 
   buttonRow->setLayout(buttonRowLayout);
 
-  raspicamImage->load(":/images/icons/oneicon.png");
-  raspicamImageWidget->setPixmap(*raspicamImage);
+  //raspicamImage->load(":/images/icons/oneicon.png");
+  //raspicamImageWidget->setPixmap(*raspicamImage);
 
   basicLayout->addWidget(raspicamImageWidget,Qt::AlignCenter);
   basicLayout->addWidget(buttonRow);
