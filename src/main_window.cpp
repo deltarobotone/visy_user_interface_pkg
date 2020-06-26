@@ -77,5 +77,9 @@ void MainWindow::updateImage(cv::Mat image)
   cvtColor(image, image, CV_BGR2RGB);
   cv::resize(image, image, cv::Size(int(image.cols * 0.75),int(image.rows * 0.75)), 0, 0, CV_INTER_LINEAR);
   raspicamImageWidget->setPixmap(QPixmap::fromImage(QImage(image.data, image.cols, image.rows, image.step, QImage::Format_RGB888)));
+  raspicamImageWidget->update();
+  raspicamImageWidget->repaint();
+  this->repaint();
+  this->update();
 }
 
