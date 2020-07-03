@@ -37,6 +37,8 @@ bool DataExchangeThread::init()
   imageSub = it.subscribe("visy_image", 1, &DataExchangeThread::imageCb, this);
   startSortingClient = nh.serviceClient<visy_sorting_app_pkg::StartSorting>("start_sorting");
   stopSortingClient = nh.serviceClient<visy_sorting_app_pkg::StopSorting>("stop_sorting");
+  selectImageClient = nh.serviceClient<visy_detector_pkg::SelectImage>("select_image");
+
   rosNodeThread->start();
 
   return true;
@@ -57,6 +59,7 @@ void DataExchangeThread::imageCb(const sensor_msgs::ImageConstPtr& image)
 
   delete pMutex;
   Q_EMIT newImage(imagework);
+  qApp->processEvents();
 }
 
 void DataExchangeThread::run()
@@ -91,6 +94,9 @@ void DataExchangeThread::changeImageBack()
 {
   QMutex * pMutex = new QMutex();
   pMutex->lock();
+  visy_detector_pkg::SelectImage srv;
+  srv.request.direction = srv.request.BACK;
+  selectImageClient.call(srv);
   pMutex->unlock();
   delete pMutex;
 }
@@ -99,6 +105,9 @@ void DataExchangeThread::changeImageNext()
 {
   QMutex * pMutex = new QMutex();
   pMutex->lock();
+  visy_detector_pkg::SelectImage srv;
+  srv.request.direction = srv.request.NEXT;
+  selectImageClient.call(srv);
   pMutex->unlock();
   delete pMutex;
 }

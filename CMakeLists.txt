@@ -26,4 +26,5 @@ add_executable(
 
 target_link_libraries(visy_user_interface ${QT_LIBRARIES} ${catkin_LIBRARIES} Qt5::Widgets)
 target_link_libraries(visy_user_interface ${OpenCV_LIBS})
+add_dependencies(visy_user_interface visy_sorting_app_pkg_gencpp)
 install(TARGETS visy_user_interface RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})

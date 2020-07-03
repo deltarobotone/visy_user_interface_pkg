@@ -21,6 +21,7 @@
 #include <opencv2/opencv.hpp>
 #include "visy_sorting_app_pkg/StartSorting.h"
 #include "visy_sorting_app_pkg/StopSorting.h"
+#include "visy_detector_pkg/SelectImage.h"
 
 using namespace cv;
 using namespace std;
@@ -51,6 +52,8 @@ private:
 
   ros::ServiceClient startSortingClient;
   ros::ServiceClient stopSortingClient;
+  ros::ServiceClient selectImageClient;
+
 
   image_transport::Subscriber imageSub;
   cv::Mat imagework;
