@@ -18,7 +18,8 @@
   <build_depend>cv_bridge</build_depend>
   <build_depend>image_transport</build_depend>
   <build_depend>visy_sorting_app_pkg</build_depend>
-  
+  <build_depend>visy_detector_pkg</build_depend>  
+
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>roscpp</exec_depend>
   <exec_depend>sensor_msgs</exec_depend>
@@ -26,4 +27,5 @@
   <exec_depend>image_transport</exec_depend>
   <exec_depend>OpenCV</exec_depend>
   <exec_depend>visy_sorting_app_pkg</exec_depend>
+  <exec_depend>visy_detector_pkg</exec_depend>
 </package>
