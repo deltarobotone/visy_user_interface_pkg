@@ -21,6 +21,7 @@
   <build_depend>image_transport</build_depend>
   <build_depend>visy_sorting_app_pkg</build_depend>
   <build_depend>visy_detector_pkg</build_depend>  
+  <build_depend>qtbase5-dev</build_depend>
 
   <exec_depend>boost</exec_depend>
   <exec_depend>libopencv-dev</exec_depend>
