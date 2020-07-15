@@ -1,7 +1,15 @@
 - git: 
+    local-name: one_easy_protocol_pkg
+    uri: https://github.com/deltarobotone/one_easy_protocol_pkg
+
+- git: 
+    local-name: visy_neopixel_pkg
+    uri: https://github.com/deltarobotone/visy_neopixel_pkg
+    
+- git: 
     local-name: visy_sorting_app_pkg
     uri: https://github.com/deltarobotone/visy_sorting_app_pkg
-
+    
 - git: 
     local-name: visy_detector_pkg
     uri: https://github.com/deltarobotone/visy_detector_pkg
