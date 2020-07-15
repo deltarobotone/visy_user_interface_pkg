@@ -1,0 +1,7 @@
+- git: 
+    local-name: visy_sorting_app_pkg
+    uri: https://github.com/deltarobotone/visy_sorting_app_pkg
+
+- git: 
+    local-name: visy_detector_pkg
+    uri: https://github.com/deltarobotone/visy_detector_pkg
