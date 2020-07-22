@@ -53,8 +53,6 @@ private:
   ros::ServiceClient startSortingClient;
   ros::ServiceClient stopSortingClient;
   ros::ServiceClient selectImageClient;
-
-
   image_transport::Subscriber imageSub;
   cv::Mat imagework;
 
