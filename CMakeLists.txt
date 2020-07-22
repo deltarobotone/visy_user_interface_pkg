@@ -3,12 +3,12 @@ project(visy_user_interface_pkg)
 
 add_compile_options(-std=c++11)
 
-find_package(catkin REQUIRED COMPONENTS roscpp geometry_msgs sensor_msgs cv_bridge image_transport visy_sorting_app_pkg)
+find_package(catkin REQUIRED COMPONENTS roscpp geometry_msgs sensor_msgs cv_bridge image_transport visy_sorting_app_pkg visy_detector_pkg)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Core REQUIRED)
 find_package(OpenCV REQUIRED)
 
-catkin_package(CATKIN_DEPENDS roscpp geometry_msgs sensor_msgs cv_bridge image_transport visy_sorting_app_pkg)
+catkin_package(CATKIN_DEPENDS roscpp geometry_msgs sensor_msgs cv_bridge image_transport visy_sorting_app_pkg visy_detector_pkg)
 
 qt5_add_resources(QT_RESOURCES_CPP res.qrc)
 qt5_wrap_cpp(QT_MOC_HPP src/main_window.h src/data_exchange_thread.h)
@@ -26,5 +26,4 @@ add_executable(
 
 target_link_libraries(visy_user_interface ${QT_LIBRARIES} ${catkin_LIBRARIES} Qt5::Widgets)
 target_link_libraries(visy_user_interface ${OpenCV_LIBS})
-add_dependencies(visy_user_interface visy_sorting_app_pkg_gencpp)
 install(TARGETS visy_user_interface RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
