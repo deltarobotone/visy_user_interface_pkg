@@ -75,12 +75,12 @@ void MainWindow::nextButtonHandle(){dataExchangeThread.changeImageNext();}
 void MainWindow::updateImage(cv::Mat image)
 {
   cvtColor(image, image, CV_BGR2RGB);
-  raspicamImageWidget->setPixmap(QPixmap::fromImage(QImage(image.data, image.cols, image.rows, image.step[0], QImage::Format_RGB888).scaled(200,200,Qt::KeepAspectRatio, Qt::SmoothTransformation)));
+  raspicamImageWidget->setPixmap(QPixmap::fromImage(QImage(image.data, image.cols, image.rows, image.step, QImage::Format_RGB888).scaled(200,200,Qt::KeepAspectRatio, Qt::SmoothTransformation)));
 
-  raspicamImageWidget->update();
-  raspicamImageWidget->repaint();
-  this->repaint();
+  //raspicamImageWidget->update();
+  //raspicamImageWidget->repaint();
+  //this->repaint();
   this->update();
-  QApplication::processEvents();
+  //QApplication::processEvents();
 }
 
