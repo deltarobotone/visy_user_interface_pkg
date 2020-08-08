@@ -6,17 +6,24 @@ MainWindow::MainWindow(int argc, char **argv, QWidget *parent)
     dataExchangeThread(argc, argv)
 {
   basicLayout = new QVBoxLayout(this);
-  buttonRowLayout = new QHBoxLayout;
-  buttonRow = new QWidget;
+  buttonGroupboxLayout = new QHBoxLayout;
+  buttonGroupbox = new QGroupBox;
 
-  infoLayout = new QVBoxLayout;
-  infoWidget = new QWidget;
+  graspDataLayout = new QVBoxLayout;
+  graspDataWidget = new QWidget;
+
+  mainGroupbox = new QGroupBox;
+  mainGroupboxLayout = new QHBoxLayout;
+
+  infoGroupbox = new QGroupBox;
+  infoGroupboxLayout = new QHBoxLayout;
 
   startButton = new QPushButton;
   stopButton = new QPushButton;
   backButton = new QPushButton;
   nextButton = new QPushButton;
   infoButton = new QPushButton;
+  closeButton = new QPushButton;
 
   detectedMetalChips = new QLabel;
   velocity = new QLabel;
@@ -45,7 +52,11 @@ MainWindow::MainWindow(int argc, char **argv, QWidget *parent)
 
 void MainWindow::createLayout()
 {
-  QSize btnSize (30, 30);
+  mainGroupbox->setStyleSheet("QGroupBox {border-radius: 10px; border: 2px solid rgb(200, 200, 200);}");
+  buttonGroupbox->setStyleSheet("QGroupBox {border-radius: 10px; border: 2px solid rgb(200, 200, 200);}");
+  infoGroupbox->setStyleSheet("QGroupBox {border-radius: 10px; border: 2px solid rgb(200, 200, 200);}");
+
+  QSize btnSize (40, 40);
   startButton->setIcon(QIcon(":/images/icons/play.png"));
   startButton->setStyleSheet("QPushButton{ background-color: rgb(255, 255, 255); border-radius: 10px; border: 1px solid rgb(255, 255, 255);}");
   startButton->setIconSize(btnSize);
@@ -66,44 +77,68 @@ void MainWindow::createLayout()
   nextButton->setIconSize(btnSize);
   connect(nextButton, &QPushButton::clicked,this,&MainWindow::nextButtonHandle);
 
+  closeButton->setIcon(QIcon(":/images/icons/disconnect.png"));
+  closeButton->setStyleSheet("QPushButton{ background-color: rgb(255, 255, 255); border-radius: 10px; border: 1px solid rgb(255, 255, 255);}");
+  closeButton->setIconSize(btnSize);
+  connect(closeButton, &QPushButton::clicked,this,&MainWindow::closeButtonHandle);
+
   infoButton->setIcon(QIcon(":/images/icons/info.png"));
   infoButton->setStyleSheet("QPushButton{ background-color: rgb(255, 255, 255); border-radius: 10px; border: 1px solid rgb(255, 255, 255);}");
   infoButton->setIconSize(btnSize);
   connect(infoButton, &QPushButton::clicked,this,&MainWindow::infoButtonHandle);
 
+  QFont font("Arial Rounded MT Bold", 10);
+
   detectedMetalChips->setText("Detected metalchips: -");
+  detectedMetalChips->setFont(font);
   velocity->setText("Calculated velocity: -");
+  velocity->setFont(font);
   lastDetectedPosition->setText("Last detected position: -");
+  lastDetectedPosition->setFont(font);
   hue->setText("Hue value: -");
+  hue->setFont(font);
   colour->setText("Selected colour: -");
+  colour->setFont(font);
   latencyMilliseconds->setText("Latency milliseconds: -");
+  latencyMilliseconds->setFont(font);
   latencyDistance->setText("Latency distance: -");
+  latencyDistance->setFont(font);
   delayTime->setText("Delay to stop conveyor: -");
+  delayTime->setFont(font);
 
-  infoLayout->addWidget(detectedMetalChips);
-  infoLayout->addWidget(velocity);
-  infoLayout->addWidget(lastDetectedPosition);
-  infoLayout->addWidget(hue);
-  infoLayout->addWidget(colour);
-  infoLayout->addWidget(latencyMilliseconds);
-  infoLayout->addWidget(delayTime);
-  infoWidget->setLayout(infoLayout);
-  infoWidget->setFixedSize(220,220);
+  graspDataLayout->addWidget(detectedMetalChips);
+  graspDataLayout->addWidget(velocity);
+  graspDataLayout->addWidget(lastDetectedPosition);
+  graspDataLayout->addWidget(hue);
+  graspDataLayout->addWidget(colour);
+  graspDataLayout->addWidget(latencyMilliseconds);
+  graspDataLayout->addWidget(delayTime);
+  graspDataWidget->setLayout(graspDataLayout);
+  graspDataWidget->setFixedSize(200,200);
 
-  buttonRowLayout->addWidget(startButton);
-  buttonRowLayout->addWidget(stopButton);
-  buttonRowLayout->addWidget(backButton);
-  buttonRowLayout->addWidget(nextButton);
-  buttonRowLayout->addWidget(infoButton);
+  buttonGroupboxLayout->addWidget(startButton);
+  buttonGroupboxLayout->addWidget(stopButton);
+  buttonGroupboxLayout->addWidget(backButton);
+  buttonGroupboxLayout->addWidget(nextButton);
+  buttonGroupboxLayout->addWidget(infoButton);
+  buttonGroupboxLayout->addWidget(closeButton);
 
-  buttonRow->setLayout(buttonRowLayout);
+  buttonGroupbox->setLayout(buttonGroupboxLayout);
 
   raspicamImage->load(":/images/icons/oneicon.png");
-  raspicamImageWidget->setFixedSize(220,220);
+  raspicamImageWidget->setFixedSize(200,200);
   raspicamImageWidget->setPixmap(raspicamImage->scaled(200,200,Qt::KeepAspectRatio, Qt::SmoothTransformation));
-  basicLayout->addWidget(raspicamImageWidget,Qt::AlignCenter);
 
-  basicLayout->addWidget(buttonRow);
+  mainGroupboxLayout->addWidget(raspicamImageWidget);
+  mainGroupboxLayout->addWidget(graspDataWidget);
+  mainGroupbox->setLayout(mainGroupboxLayout);
+
+  mainGroupbox->setFixedSize(460,220);
+  infoGroupbox->setFixedSize(460,220);
+  buttonGroupbox->setFixedSize(460,70);
+
+  basicLayout->addWidget(mainGroupbox);
+  basicLayout->addWidget(buttonGroupbox);
 
   setLayout(basicLayout);
 }
@@ -117,29 +152,34 @@ void MainWindow::infoButtonHandle()
   if (info == false)
   {
     info = true;
-    raspicamImageWidget->hide();
-    basicLayout->removeWidget(raspicamImageWidget);
-    basicLayout->removeWidget(buttonRow);
+    mainGroupbox->hide();
+    basicLayout->removeWidget(mainGroupbox);
+    basicLayout->removeWidget(buttonGroupbox);
 
-    infoWidget->show();
-    basicLayout->addWidget(infoWidget);
-    basicLayout->addWidget(buttonRow);
+    infoGroupbox->show();
+    basicLayout->addWidget(infoGroupbox);
+    basicLayout->addWidget(buttonGroupbox);
     setLayout(basicLayout);
     this->update();
   }
   else
   {
     info = false;
-    infoWidget->hide();
-    basicLayout->removeWidget(infoWidget);
-    basicLayout->removeWidget(buttonRow);
+    infoGroupbox->hide();
+    basicLayout->removeWidget(infoGroupbox);
+    basicLayout->removeWidget(buttonGroupbox);
 
-    raspicamImageWidget->show();
-    basicLayout->addWidget(raspicamImageWidget);
-    basicLayout->addWidget(buttonRow);
+    mainGroupbox->show();
+    basicLayout->addWidget(mainGroupbox);
+    basicLayout->addWidget(buttonGroupbox);
     setLayout(basicLayout);
     this->update();
   }
+}
+
+void MainWindow::closeButtonHandle()
+{
+this->close();
 }
 
 void MainWindow::updateImage(cv::Mat image)

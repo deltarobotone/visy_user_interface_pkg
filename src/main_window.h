@@ -27,25 +27,33 @@ private:
     Q_SLOT void backButtonHandle();
     Q_SLOT void nextButtonHandle();
     Q_SLOT void infoButtonHandle();
+    Q_SLOT void closeButtonHandle();
 
     uint info = false;
 
     QVBoxLayout *basicLayout;
 
-    QWidget *buttonRow;
-    QHBoxLayout *buttonRowLayout;
+    QGroupBox *buttonGroupbox;
+    QHBoxLayout *buttonGroupboxLayout;
 
-    QWidget *infoWidget;
-    QVBoxLayout *infoLayout;
+    QWidget *graspDataWidget;
+    QVBoxLayout *graspDataLayout;
 
     QPixmap *raspicamImage;
     QLabel *raspicamImageWidget;
+
+    QGroupBox *mainGroupbox;
+    QHBoxLayout *mainGroupboxLayout;
+
+    QGroupBox *infoGroupbox;
+    QHBoxLayout *infoGroupboxLayout;
 
     QPushButton *startButton;
     QPushButton *stopButton;
     QPushButton *backButton;
     QPushButton *nextButton;
     QPushButton *infoButton;
+    QPushButton *closeButton;
 
     QLabel *detectedMetalChips;
     QLabel *velocity;

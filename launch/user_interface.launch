@@ -1,6 +1,6 @@
 <launch>
 
-    <node type="visy_user_interface" pkg="visy_user_interface_pkg" name="visy_user_interface" output="screen" respawn="true">
+    <node type="visy_user_interface" pkg="visy_user_interface_pkg" name="visy_user_interface" output="screen" respawn="false">
       <param name="image_transport" value="compressed" />
     </node>
 
