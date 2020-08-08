@@ -46,7 +46,7 @@ public:
   Q_SLOT void run();
 
   Q_SIGNAL void newImage(cv::Mat);
-  Q_SIGNAL void newGraspdata(visy_sorting_app_pkg::GraspData);
+  Q_SIGNAL void newGraspData(visy_sorting_app_pkg::GraspData);
 private:
   int initArgc;
   char** initArgv;
@@ -57,6 +57,7 @@ private:
   ros::ServiceClient stopSortingClient;
   ros::ServiceClient selectImageClient;
   image_transport::Subscriber imageSub;
+  ros::Subscriber graspDataSub;
   cv::Mat imagework;
   visy_sorting_app_pkg::GraspData graspData;
 

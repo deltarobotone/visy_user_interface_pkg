@@ -39,7 +39,7 @@ MainWindow::MainWindow(int argc, char **argv, QWidget *parent)
   setWindowTitle(tr("Main Window"));
 
   connect(&dataExchangeThread, &DataExchangeThread::newImage, this, &MainWindow::updateImage);
-  connect(&dataExchangeThread, &DataExchangeThread::newGraspdata, this, &MainWindow::updateGraspData);
+  connect(&dataExchangeThread, &DataExchangeThread::newGraspData, this, &MainWindow::updateGraspData);
   dataExchangeThread.init();
 }
 
@@ -88,7 +88,7 @@ void MainWindow::createLayout()
   infoLayout->addWidget(latencyMilliseconds);
   infoLayout->addWidget(delayTime);
   infoWidget->setLayout(infoLayout);
-  infoWidget->setFixedSize(200,200);
+  infoWidget->setFixedSize(220,220);
 
   buttonRowLayout->addWidget(startButton);
   buttonRowLayout->addWidget(stopButton);
@@ -99,6 +99,7 @@ void MainWindow::createLayout()
   buttonRow->setLayout(buttonRowLayout);
 
   raspicamImage->load(":/images/icons/oneicon.png");
+  raspicamImageWidget->setFixedSize(220,220);
   raspicamImageWidget->setPixmap(raspicamImage->scaled(200,200,Qt::KeepAspectRatio, Qt::SmoothTransformation));
   basicLayout->addWidget(raspicamImageWidget,Qt::AlignCenter);
 
@@ -163,4 +164,3 @@ void MainWindow::updateGraspData(visy_sorting_app_pkg::GraspData data)
   delayTime->setText("Delay to stop conveyor: " + QString::number(double(data.delayTime)));
   update();
 }
-

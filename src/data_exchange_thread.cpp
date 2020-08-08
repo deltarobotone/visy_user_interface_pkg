@@ -35,6 +35,7 @@ bool DataExchangeThread::init()
   image_transport::ImageTransport it(nh);
 
   imageSub = it.subscribe("visy_image", 1, &DataExchangeThread::imageCb, this);
+  graspDataSub = nh.subscribe("/grasp_data", 1, &DataExchangeThread::graspDataCb, this);
   startSortingClient = nh.serviceClient<visy_sorting_app_pkg::StartSorting>("start_sorting");
   stopSortingClient = nh.serviceClient<visy_sorting_app_pkg::StopSorting>("stop_sorting");
   selectImageClient = nh.serviceClient<visy_detector_pkg::SelectImage>("select_image");
@@ -72,7 +73,7 @@ void DataExchangeThread::graspDataCb(const visy_sorting_app_pkg::GraspDataConstP
 
   delete pMutex;
 
-  Q_EMIT newGraspdata(graspData);
+  Q_EMIT newGraspData(graspData);
   qApp->processEvents();
 }
 
