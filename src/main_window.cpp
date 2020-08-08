@@ -156,7 +156,7 @@ void MainWindow::updateGraspData(visy_sorting_app_pkg::GraspData data)
 {
   detectedMetalChips->setText("Detected metalchips: " + QString::number(data.detectedMetalChips));
   velocity->setText("Calculated velocity: " + QString::number(double(data.velocity)));
-  lastDetectedPosition->setText("Last detected position: " + QString::number(data.lastDetectedPosition));
+  lastDetectedPosition->setText("Last detected position: " + QString::number(double(data.lastDetectedPosition)));
   hue->setText("Hue value: " + QString::number(data.hue));
   colour->setText("Selected colour: " + QString::fromStdString(data.colour));
   latencyMilliseconds->setText("Latency milliseconds: "+ QString::number(double(data.latencyMilliseconds)));
