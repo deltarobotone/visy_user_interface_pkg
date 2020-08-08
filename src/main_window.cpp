@@ -93,17 +93,17 @@ void MainWindow::createLayout()
   detectedMetalChips->setFont(font);
   velocity->setText("Calculated velocity: -");
   velocity->setFont(font);
-  lastDetectedPosition->setText("Last detected position: -");
+  lastDetectedPosition->setText("Last position: -");
   lastDetectedPosition->setFont(font);
   hue->setText("Hue value: -");
   hue->setFont(font);
   colour->setText("Selected colour: -");
   colour->setFont(font);
-  latencyMilliseconds->setText("Latency milliseconds: -");
+  latencyMilliseconds->setText("Latency: -");
   latencyMilliseconds->setFont(font);
   latencyDistance->setText("Latency distance: -");
   latencyDistance->setFont(font);
-  delayTime->setText("Delay to stop conveyor: -");
+  delayTime->setText("Delay unti stop: -");
   delayTime->setFont(font);
 
   graspDataLayout->addWidget(detectedMetalChips);
@@ -196,11 +196,11 @@ void MainWindow::updateGraspData(visy_sorting_app_pkg::GraspData data)
 {
   detectedMetalChips->setText("Detected metalchips: " + QString::number(data.detectedMetalChips));
   velocity->setText("Calculated velocity: " + QString::number(double(data.velocity)));
-  lastDetectedPosition->setText("Last detected position: " + QString::number(double(data.lastDetectedPosition)));
+  lastDetectedPosition->setText("Last position: " + QString::number(double(data.lastDetectedPosition)));
   hue->setText("Hue value: " + QString::number(data.hue));
   colour->setText("Selected colour: " + QString::fromStdString(data.colour));
-  latencyMilliseconds->setText("Latency milliseconds: "+ QString::number(double(data.latencyMilliseconds)));
+  latencyMilliseconds->setText("Latency: "+ QString::number(double(data.latencyMilliseconds)));
   latencyDistance->setText("Latency distance: " + QString::number(double(data.latencyDistance)));
-  delayTime->setText("Delay to stop conveyor: " + QString::number(double(data.delayTime)));
+  delayTime->setText("Delay until stop: " + QString::number(double(data.delayTime)));
   update();
 }
