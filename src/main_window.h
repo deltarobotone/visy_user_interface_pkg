@@ -20,16 +20,23 @@ public:
     MainWindow(int argc, char** argv, QWidget * parent = 0);
 
     Q_SLOT void updateImage(cv::Mat image);
+    Q_SLOT void updateGraspData(visy_sorting_app_pkg::GraspData data);
 private:
     Q_SLOT void startButtonHandle();
     Q_SLOT void stopButtonHandle();
     Q_SLOT void backButtonHandle();
     Q_SLOT void nextButtonHandle();
+    Q_SLOT void infoButtonHandle();
+
+    uint info = false;
 
     QVBoxLayout *basicLayout;
 
     QWidget *buttonRow;
     QHBoxLayout *buttonRowLayout;
+
+    QWidget *infoWidget;
+    QVBoxLayout *infoLayout;
 
     QPixmap *raspicamImage;
     QLabel *raspicamImageWidget;
@@ -38,6 +45,16 @@ private:
     QPushButton *stopButton;
     QPushButton *backButton;
     QPushButton *nextButton;
+    QPushButton *infoButton;
+
+    QLabel *detectedMetalChips;
+    QLabel *velocity;
+    QLabel *lastDetectedPosition;
+    QLabel *hue;
+    QLabel *colour;
+    QLabel *latencyMilliseconds;
+    QLabel *latencyDistance;
+    QLabel *delayTime;
 
     DataExchangeThread dataExchangeThread;
 

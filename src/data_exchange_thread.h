@@ -22,6 +22,7 @@
 #include "visy_sorting_app_pkg/StartSorting.h"
 #include "visy_sorting_app_pkg/StopSorting.h"
 #include "visy_detector_pkg/SelectImage.h"
+#include "visy_sorting_app_pkg/GraspData.h"
 
 using namespace cv;
 using namespace std;
@@ -35,6 +36,7 @@ public:
   bool init();
 
   void imageCb(const sensor_msgs::ImageConstPtr& image);
+  void graspDataCb(const visy_sorting_app_pkg::GraspDataConstPtr& msg);
 
   void startSortingApp();
   void stopSortingApp();
@@ -44,6 +46,7 @@ public:
   Q_SLOT void run();
 
   Q_SIGNAL void newImage(cv::Mat);
+  Q_SIGNAL void newGraspdata(visy_sorting_app_pkg::GraspData);
 private:
   int initArgc;
   char** initArgv;
@@ -55,6 +58,7 @@ private:
   ros::ServiceClient selectImageClient;
   image_transport::Subscriber imageSub;
   cv::Mat imagework;
+  visy_sorting_app_pkg::GraspData graspData;
 
 };
 #endif

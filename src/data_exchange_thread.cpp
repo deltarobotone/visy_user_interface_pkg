@@ -62,6 +62,20 @@ void DataExchangeThread::imageCb(const sensor_msgs::ImageConstPtr& image)
   qApp->processEvents();
 }
 
+void DataExchangeThread::graspDataCb(const visy_sorting_app_pkg::GraspDataConstPtr& msg)
+{
+  QMutex * pMutex = new QMutex();
+
+  pMutex->lock();
+  graspData = *msg;
+  pMutex->unlock();
+
+  delete pMutex;
+
+  Q_EMIT newGraspdata(graspData);
+  qApp->processEvents();
+}
+
 void DataExchangeThread::run()
 {
   while (ros::ok())
