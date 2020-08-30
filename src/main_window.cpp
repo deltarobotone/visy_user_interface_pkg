@@ -24,6 +24,7 @@ MainWindow::MainWindow(int argc, char **argv, QWidget *parent)
   nextButton = new QPushButton;
   infoButton = new QPushButton;
   closeButton = new QPushButton;
+  updateButton = new QPushButton;
 
   detectedMetalChips = new QLabel;
   velocity = new QLabel;
@@ -87,6 +88,11 @@ void MainWindow::createLayout()
   infoButton->setIconSize(btnSize);
   connect(infoButton, &QPushButton::clicked,this,&MainWindow::infoButtonHandle);
 
+  updateButton->setIcon(QIcon(":/images/icons/refresh.png"));
+  updateButton->setStyleSheet("QPushButton{ background-color: rgb(255, 255, 255); border-radius: 10px; border: 1px solid rgb(255, 255, 255);}");
+  updateButton->setIconSize(btnSize);
+  connect(updateButton, &QPushButton::clicked,this,&MainWindow::updateButtonHandle);
+
   QFont font("Arial Rounded MT Bold", 10);
 
   detectedMetalChips->setText("Detected metalchips: -");
@@ -122,6 +128,7 @@ void MainWindow::createLayout()
   buttonGroupboxLayout->addWidget(nextButton);
   buttonGroupboxLayout->addWidget(infoButton);
   buttonGroupboxLayout->addWidget(closeButton);
+  buttonGroupboxLayout->addWidget(updateButton);
 
   buttonGroupbox->setLayout(buttonGroupboxLayout);
 
@@ -147,6 +154,7 @@ void MainWindow::startButtonHandle(){dataExchangeThread.startSortingApp();}
 void MainWindow::stopButtonHandle(){dataExchangeThread.stopSortingApp();}
 void MainWindow::backButtonHandle(){dataExchangeThread.changeImageBack();}
 void MainWindow::nextButtonHandle(){dataExchangeThread.changeImageNext();}
+
 void MainWindow::infoButtonHandle()
 {
   if (info == false)
@@ -179,7 +187,26 @@ void MainWindow::infoButtonHandle()
 
 void MainWindow::closeButtonHandle()
 {
-this->close();
+  this->close();
+}
+
+void MainWindow::updateButtonHandle()
+{
+  QMessageBox::StandardButton reply;
+  reply = QMessageBox::question(this, "Update", "An update overrides all data! If you have no development done on the system you can update without worrys. Please connect the system to the internet. Do you want to update now?", QMessageBox::Yes|QMessageBox::No);
+  if (reply == QMessageBox::Yes) {
+    try {
+      QProcess *process = new QProcess(this);
+      process->start("lxterminal --command './ros/src/visy_user_interface_pkg/scripts/update.sh'");
+      this->hide();
+      process->waitForFinished();
+      process->close();
+      this->close();
+    }
+    catch(const std::exception& e){
+      this->show();
+    }
+  }
 }
 
 void MainWindow::updateImage(cv::Mat image)

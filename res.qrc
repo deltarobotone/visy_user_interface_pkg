@@ -16,4 +16,7 @@
         <file>icons/back.png</file>
         <file>icons/info.png</file>
     </qresource>
+    <qresource prefix="/scripts">
+        <file>scripts/update.sh</file>
+    </qresource>
 </RCC>

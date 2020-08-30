@@ -10,6 +10,7 @@
 #include <QLineEdit>
 #include <QPalette>
 #include <QIcon>
+#include <QProcess>
 #include "data_exchange_thread.h"
 
 class MainWindow : public QWidget
@@ -28,6 +29,7 @@ private:
     Q_SLOT void nextButtonHandle();
     Q_SLOT void infoButtonHandle();
     Q_SLOT void closeButtonHandle();
+    Q_SLOT void updateButtonHandle();
 
     uint info = false;
 
@@ -54,6 +56,7 @@ private:
     QPushButton *nextButton;
     QPushButton *infoButton;
     QPushButton *closeButton;
+    QPushButton *updateButton;
 
     QLabel *detectedMetalChips;
     QLabel *velocity;
