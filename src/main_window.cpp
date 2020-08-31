@@ -201,6 +201,7 @@ void MainWindow::updateButtonHandle()
       this->hide();
       process->waitForFinished();
       process->close();
+      reply = QMessageBox::question(this, "Update", "Please reboot the system");
       this->close();
     }
     catch(const std::exception& e){
