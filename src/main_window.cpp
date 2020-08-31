@@ -199,7 +199,7 @@ void MainWindow::updateButtonHandle()
       QProcess *process = new QProcess(this);
       process->start("lxterminal --working-directory=/home/ubuntu/catkin_ws/src/visy_user_interface_pkg/scripts --command './update.sh'");
       this->hide();
-      process->waitForFinished();
+      process->waitForFinished(-1);
       process->close();
       reply = QMessageBox::question(this, "Update", "Please reboot the system");
       this->close();
