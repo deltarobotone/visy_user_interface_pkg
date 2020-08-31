@@ -97,19 +97,19 @@ void MainWindow::createLayout()
 
   detectedMetalChips->setText("Detected metalchips: -");
   detectedMetalChips->setFont(font);
-  velocity->setText("Calculated velocity: -");
+  velocity->setText("Velocity (pixel/ses): -");
   velocity->setFont(font);
-  lastDetectedPosition->setText("Last position: -");
+  lastDetectedPosition->setText("Last position (pixel): -");
   lastDetectedPosition->setFont(font);
   hue->setText("Hue value: -");
   hue->setFont(font);
   colour->setText("Selected colour: -");
   colour->setFont(font);
-  latencyMilliseconds->setText("Latency: -");
+  latencyMilliseconds->setText("Latency (ms): -");
   latencyMilliseconds->setFont(font);
-  latencyDistance->setText("Latency distance: -");
+  latencyDistance->setText("Latency dist. (pixel): -");
   latencyDistance->setFont(font);
-  delayTime->setText("Delay unti stop: -");
+  delayTime->setText("Delay until stop (ms): -");
   delayTime->setFont(font);
 
   graspDataLayout->addWidget(detectedMetalChips);
@@ -222,12 +222,12 @@ void MainWindow::updateImage(cv::Mat image)
 void MainWindow::updateGraspData(visy_sorting_app_pkg::GraspData data)
 {
   detectedMetalChips->setText("Detected metalchips: " + QString::number(data.detectedMetalChips));
-  velocity->setText("Calculated velocity: " + QString::number(double(data.velocity)));
-  lastDetectedPosition->setText("Last position: " + QString::number(double(data.lastDetectedPosition)));
+  velocity->setText("Velocity (pixel/sec): " + QString::number(double(data.velocity),  'g',  3));
+  lastDetectedPosition->setText("Last position (pixel): " + QString::number(double(data.lastDetectedPosition),  'g',  3));
   hue->setText("Hue value: " + QString::number(data.hue));
   colour->setText("Selected colour: " + QString::fromStdString(data.colour));
-  latencyMilliseconds->setText("Latency: "+ QString::number(double(data.latencyMilliseconds)));
-  latencyDistance->setText("Latency distance: " + QString::number(double(data.latencyDistance)));
-  delayTime->setText("Delay until stop: " + QString::number(double(data.delayTime)));
+  latencyMilliseconds->setText("Latency (ms): "+ QString::number(double(data.latencyMilliseconds),  'g',  3));
+  latencyDistance->setText("Latency dist. (pixel): " + QString::number(double(data.latencyDistance),  'g',  3));
+  delayTime->setText("Delay until stop (ms): " + QString::number(double(data.delayTime),  'g',  3));
   update();
 }
