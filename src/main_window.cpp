@@ -197,7 +197,7 @@ void MainWindow::updateButtonHandle()
   if (reply == QMessageBox::Yes) {
     try {
       QProcess *process = new QProcess(this);
-      process->start("lxterminal --command './catkin_ws/src/visy_user_interface_pkg/scripts/update.sh'");
+      process->start("lxterminal --working-directory=/home/ubuntu/catkin_ws/src/visy_user_interface_pkg/scripts --command './update.sh'");
       this->hide();
       process->waitForFinished();
       process->close();
