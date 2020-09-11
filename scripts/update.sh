@@ -30,9 +30,8 @@ git fetch origin
 git reset --hard origin/master
 git pull
 cd /home/ubuntu/catkin_ws/src/visy_neopixel_pkg/scripts/visy_neopixel_pkg
-sudo chmod +x light_ring_node.py
+sudo chmod +x light_ctrl_node.py
 sudo chmod +x neo_pixel_node.py
-sudo chmod +x status_bar_node.py
 sudo chmod +x __init__.py
 
 echo -e "\e[32mstep 5/7: update visy_sorting_app_pkg \e[39m"
