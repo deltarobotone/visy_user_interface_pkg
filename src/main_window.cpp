@@ -97,7 +97,7 @@ void MainWindow::createLayout()
 
   detectedMetalChips->setText("Detected metalchips: -");
   detectedMetalChips->setFont(font);
-  velocity->setText("Velocity (pixel/ses): -");
+  velocity->setText("Velocity (pixel/sec): -");
   velocity->setFont(font);
   lastDetectedPosition->setText("Last position (pixel): -");
   lastDetectedPosition->setFont(font);
