@@ -217,7 +217,7 @@ void MainWindow::updateImage(cv::Mat image)
     cvtColor(image, image, CV_BGR2RGB);
     QPixmap pm = QPixmap::fromImage(QImage(image.data, image.cols, image.rows, image.step, QImage::Format_RGB888).scaled(200,200,Qt::KeepAspectRatio, Qt::SmoothTransformation));
     QTransform trans;
-    trans.rotate(90);
+    trans.rotate(270);
     raspicamImageWidget->setPixmap(pm.transformed(trans));
     update();
   }
