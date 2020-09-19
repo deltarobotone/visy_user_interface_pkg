@@ -55,12 +55,13 @@ git pull
 
 echo -e "\e[32mstep 7/7: build workspace \e[39m"
 echo "kill all running nodes to save RAM for build"
-killall -v visy_user_interface
 killall -v raspicam_node
 killall -v metal_chip_detector_node
 killall -v conveyor_detector_node
 killall -v python3
-sleep  3
-cd /home/ubuntu/catkin_ws
-catkin build -j1
-sleep  3
+lxterminal --working-directory=/home/ubuntu/catkin_ws --command 'catkin build -j1'
+killall -v visy_user_interface
+#sleep  3
+#cd /home/ubuntu/catkin_ws
+#catkin build -j1
+#sleep  3
