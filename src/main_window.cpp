@@ -109,7 +109,7 @@ void MainWindow::createLayout()
   latencyMilliseconds->setFont(font);
   latencyDistance->setText("Latency dist. (pixel): -");
   latencyDistance->setFont(font);
-  delayTime->setText("Delay until stop (ms): -");
+  delayTime->setText("Delay until stop (sec): -");
   delayTime->setFont(font);
 
   graspDataLayout->addWidget(detectedMetalChips);
@@ -230,8 +230,8 @@ void MainWindow::updateGraspData(visy_sorting_app_pkg::GraspData data)
   lastDetectedPosition->setText("Last position (pixel): " + QString::number(double(data.lastDetectedPosition),  'g',  3));
   hue->setText("Hue value: " + QString::number(data.hue));
   colour->setText("Selected colour: " + QString::fromStdString(data.colour));
-  latencyMilliseconds->setText("Latency (ms): "+ QString::number(double(data.latencyMilliseconds),  'g',  3));
+  latencyMilliseconds->setText("Latency (ms): "+ QString::number(double(data.latencyMilliseconds*100),  'g',  3));
   latencyDistance->setText("Latency dist. (pixel): " + QString::number(double(data.latencyDistance),  'g',  3));
-  delayTime->setText("Delay until stop (ms): " + QString::number(double(data.delayTime),  'g',  3));
+  delayTime->setText("Delay until stop (sec): " + QString::number(double(data.delayTime),  'g',  3));
   update();
 }
