@@ -59,7 +59,6 @@ killall -v raspicam_node
 killall -v metal_chip_detector_node
 killall -v conveyor_detector_node
 killall -v python3
-lxterminal --working-directory=/home/ubuntu/catkin_ws --command 'catkin build -j1'
 sleep  3
 cd /home/ubuntu/catkin_ws
 catkin build -j1
