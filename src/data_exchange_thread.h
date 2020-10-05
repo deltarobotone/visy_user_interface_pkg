@@ -53,10 +53,15 @@ private:
 
   QThread * rosNodeThread;
 
+  //Client to start sorting application for metal chips including Delta-Robot One, conveyor system and vision system.
   ros::ServiceClient startSortingClient;
+  //Client to stop sorting application.
   ros::ServiceClient stopSortingClient;
+  //Client to change image at processing state via buttons on user interface to select displayed image processing state.
   ros::ServiceClient selectImageClient;
+  //Subscribe image at the end of a detection loop published by conveyor detector or metal chip detetctor.
   image_transport::Subscriber imageSub;
+  //Subscribe grasp data including the time until grasp, colour of chip, number of detetcted chips, latency, velocity, last chip position, etc.
   ros::Subscriber graspDataSub;
   cv::Mat imagework;
   visy_sorting_app_pkg::GraspData graspData;
