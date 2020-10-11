@@ -7,7 +7,7 @@ Qt based user interface for vision system (visy) display on backside. Controls a
 
 This package is part of the Visy ROS workspace
 
-[<img src="https://raw.githubusercontent.com/deltarobotone/image_database/master/visy_doc/visy_doc%20(1).PNG" width="500">](https://raw.githubusercontent.com/deltarobotone/image_database/master/visy_doc/visy_doc%20(1).PNG)
+[<img src="https://raw.githubusercontent.com/deltarobotone/image_database/master/visy_doc/visy_doc%20(1).PNG" width="1000">](https://raw.githubusercontent.com/deltarobotone/image_database/master/visy_doc/visy_doc%20(1).PNG)
 
 - [visy_sorting_app_pkg](https://github.com/deltarobotone/visy_sorting_app_pkg)
 - [visy_detector_pkg](https://github.com/deltarobotone/visy_detector_pkg)
