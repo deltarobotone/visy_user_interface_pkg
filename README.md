@@ -5,6 +5,17 @@ Qt based user interface for vision system (visy) display on backside. Controls a
 ![CI](https://github.com/deltarobotone/visy_user_interface_pkg/workflows/CI/badge.svg?branch=master)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/be05858eeff6450380d40f157e511fc9)](https://www.codacy.com/gh/deltarobotone/visy_user_interface_pkg?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=deltarobotone/visy_user_interface_pkg&amp;utm_campaign=Badge_Grade)
 
+This package is part of the Visy ROS workspace
+
+[<img src="https://raw.githubusercontent.com/deltarobotone/image_database/master/visy_doc/visy_doc%20(1).PNG" width="500">](https://raw.githubusercontent.com/deltarobotone/image_database/master/visy_doc/visy_doc%20(1).PNG)
+
+- [visy_sorting_app_pkg](https://github.com/deltarobotone/visy_sorting_app_pkg)
+- [visy_detector_pkg](https://github.com/deltarobotone/visy_detector_pkg)
+- [one_easy_protocol_pkg](https://github.com/deltarobotone/one_easy_protocol_pkg)
+- [one_easy_protocol_pkg](https://github.com/deltarobotone/one_easy_protocol_pkg)
+- [visy_neopixel_pkg](https://github.com/deltarobotone/visy_neopixel_pkg)
+- [raspicam_node](https://github.com/UbiquityRobotics/raspicam_node)
+
 ## Nodes
 
 ### data_exchange_thread
